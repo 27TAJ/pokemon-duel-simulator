@@ -3,13 +3,8 @@ import random
 from PIL import Image, ImageTk
 from io import BytesIO
 
-
-#pokemon logic
-
-trainer_team = []
-enemy_team = []
-
 def fetch_all_pokemon():
+    global all_pokemon
     base_url = "https://pokeapi.co/api/v2/"
     endpoint = "pokemon"
     url = base_url + endpoint
@@ -49,16 +44,18 @@ def get_pokemon_image(pokemon):
     image = Image.open(BytesIO(image_response.content))
     return image
 
-def init_team(team):
-     for x in range(0,6):
-        random_pokemon = random.choice(all_pokemon)
-        team.append(random_pokemon)
+def init_teams():
+    global trainer_team, enemy_team
+    fetch_all_pokemon()
+    trainer_team = []
+    enemy_team = []
 
+    for x in range(0, 6):
+        random_pokemon = random.choice(all_pokemon)["name"]
+        trainer_team.append(random_pokemon)
+    for x in range(0, 6):
+        random_pokemon = random.choice(all_pokemon)["name"]
+        enemy_team.append(random_pokemon)
 
+    return trainer_team, enemy_team
 
-
-
-
-if __name__ == "__main__":
-    all_pokemon = fetch_all_pokemon()
-    print("done")
