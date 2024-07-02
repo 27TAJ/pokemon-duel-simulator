@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 from io import BytesIO
 
 def fetch_all_pokemon():
+    print('hello')
     global all_pokemon
     base_url = "https://pokeapi.co/api/v2/"
     endpoint = "pokemon"
