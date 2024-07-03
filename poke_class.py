@@ -26,7 +26,7 @@ def generate_team():
 
 class Pokemon:
     def __init__(self, poke_data): # add data as we need it
-        self.id = int(poke_data['id'])
+        self.id = poke_data['id']
         self.name = poke_data['name']
         self.types = poke_data['types']
 
