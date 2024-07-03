@@ -1,6 +1,5 @@
 import requests
 import random
-from io import BytesIO
 
 # A pokemon class that will be use to hold information and actions
 # related to the pokemon being imported.
