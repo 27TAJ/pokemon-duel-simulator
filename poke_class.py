@@ -51,6 +51,15 @@ class Pokemon:
 
     #add functions
 
+class Move:
+    def __init__(self, move_data): # add data as we need it
+        self.id
+        self.name
+        self.type
+
+    def __str__(self):
+        return f"{self.name}\n (ID: {self.id})" # format info later
+
 my_team = generate_team()
 for p in my_team:
     print(p)
