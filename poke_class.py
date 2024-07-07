@@ -4,7 +4,6 @@
 
 import requests
 import random
-import sqlite3
 
 def generate_team():
     num_team = random.sample(range(1,1026), 6) # replace constants w variable names
