@@ -31,8 +31,16 @@ class Pokemon:
         self.types = [type_name['type']['name'] for type_name in poke_data['types']]
         self.moves = self.get_pokemon_moves(poke_data)
         
-        
-        
+        self.hp = self.get_base_stat_value(poke_data, "hp")
+        self.attack = self.get_base_stat_value(poke_data, "attack")
+        self.defense = self.get_base_stat_value(poke_data, "defense")
+        self.special_attack = self.get_base_stat_value(poke_data, "special-attack")
+        self.special_defense = self.get_base_stat_value(poke_data, "special-defense")
+        self.speed = self.get_base_stat_value(poke_data, "speed")
+
+    def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
+        return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
+            
     def get_pokemon_moves(self, poke_data):
         moves = []
         possible_moves = poke_data.get('moves', [])
@@ -56,7 +64,7 @@ class Pokemon:
         return (f"{self.name}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}")
 
 class Move:
-    def __init__(self, move_data): # add data as we need it
+    def __init__(self, move_data):
         self.id = move_data['id']
         self.name = move_data['name']
         self.type = move_data['type']['name']
