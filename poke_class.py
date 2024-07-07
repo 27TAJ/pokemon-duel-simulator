@@ -4,6 +4,7 @@
 
 import requests
 import random
+import sqlite3
 
 def generate_team():
     num_team = random.sample(range(1,1026), 6) # replace constants w variable names
@@ -30,25 +31,17 @@ class Pokemon:
         self.name = poke_data['name']
         self.types = poke_data['types']
         self.moves = []
+        possible_moves = poke_data.get('moves', [])
+        move_names = [move['move']['name'] for move in possible_moves]
+        self.moves = random.sample(move_names, min(4, len(move_names)))
+        
 
     def __str__(self):
+        print(self.moves)
         return f"{self.name}\n (ID: {self.id})" # format info later
     
     #add getters
-    def get_possible_moves(self):
-        url = f"https://pokeapi.co/api/v2/pokemon/{self.id}/"
-
-        try:  
-            response = requests.get(url)
-            response.raise_for_status()
-            poke_data = response.json()
-            possible_moves = poke_data.get('moves', [])
-            move_names = [move['move']['name'] for move in possible_moves]
-            self.moves = random.sample(move_names, min(4, len(move_names)))  #adds 4 or fewer moves to pokemon
-            print(self.moves)
-        except requests.exceptions.RequestException as e:
-            print(f"Error getting possible moves: {e}")
-
+    
     #add functions
 
 class Move:
@@ -59,8 +52,8 @@ class Move:
 
     def __str__(self):
         return f"{self.name}\n (ID: {self.id})" # format info later
+        
 
 my_team = generate_team()
 for p in my_team:
     print(p)
-    p.get_possible_moves()
