@@ -2,10 +2,10 @@
 # related to the pokemon being imported. This file may be merged with 
 # the pokemon file.
 
-import requests
 import random
 import math
 from data import get_data
+from move_class import Move
 
 class Pokemon:
     def __init__(self, id): # add data as we need it
@@ -77,32 +77,9 @@ class Pokemon:
         move_strings = [str(move) for move in self.moves]
     
         return (f"{self.name}" + " " + f"LVL: {self.level}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}" + 
-                f"Nature:{self.nature}\nhp:{self.hp}\nattack:{self.attack}\ndefense:{self.defense}\nspecial-attack:{self.special_attack}\n"
+                f" Nature:{self.nature}\nhp:{self.hp}\nattack:{self.attack}\ndefense:{self.defense}\nspecial-attack:{self.special_attack}\n"
                 + f"special-defense:{self.special_defense}\nspeed:{self.speed}\n")
-
-class Move: 
-    def __init__(self, id):
-        move_data = get_data("move", id)
-
-        self.id = move_data['id']
-        self.name = move_data['name']
-        self.type = move_data['type']['name']
-        self.accuracy = move_data['accuracy']
-        self.pp = move_data['pp']
-        self.power = move_data['power']
-        self.damage_class = move_data['damage_class']['name']
-        #stat_change
-        #effect_chance
-
-    def __str__(self):
-       return f"{self.name}"
 
 my_team = [Pokemon(id) for id in random.sample(range(1,1026), 6)]
 for p in my_team:
     print(p)
-
-{
-
-
-
-}
