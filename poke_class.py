@@ -20,7 +20,6 @@ class Pokemon:
         self.moves = self.get_pokemon_moves(poke_data)
         
         stats = self.get_base_stats(poke_data) 
-
         self.hp = stats["hp"]
         self.attack = stats["attack"]
         self.defense = stats["defense"]
@@ -28,16 +27,7 @@ class Pokemon:
         self.special_defense = stats["special-defense"]
         self.speed = stats["speed"]
 
-        '''
-        self.hp = self.get_stat_value(poke_data, self.level, "hp")
-        self.attack = self.get_stat_value(poke_data, self.level, "attack")
-        self.defense = self.get_stat_value(poke_data, self.level, "defense")
-        self.special_attack = self.get_stat_value(poke_data, self.level, "special-attack")
-        self.special_defense = self.get_stat_value(poke_data, self.level, "special-defense")
-        self.speed = self.get_stat_value(poke_data, self.level, "speed")'''
-        
         self.nature = self.get_rand_nature()
-
 
     def get_rand_nature(self):
         nature_data = get_data("nature", random.randint(1,25))
@@ -74,21 +64,6 @@ class Pokemon:
 
             stats_dict[name] = base
         return stats_dict
-        
-    # this method needs to iterate through all stats each time in order to find
-    # the base stat we're looking for, new method iterates once and returns a dictionary
-    '''
-    def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
-        return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
-
-    
-    def get_stat_value(self, poke_data, level, stat_name):
-        base = self.get_base_stat_value(poke_data, stat_name)
-        if (stat_name == "hp"):
-            return math.floor(0.01 * (2 * base * level) + level + 10)
-        else:
-            return math.floor(0.01 * (2  *base * level) + level + 5)
-    '''
 
     def get_pokemon_moves(self, poke_data):
         moves = []
@@ -119,11 +94,7 @@ class Move:
 
     def __str__(self):
        return f"{self.name}"
-        
 
 my_team = generate_team()
 for p in my_team:
     print(p)
-
-mew = Pokemon(150)
-print(mew)
