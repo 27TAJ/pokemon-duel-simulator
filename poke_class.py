@@ -5,7 +5,6 @@
 import requests
 import random
 import math
-from data import data_dictionary
 from data import get_data
 
 def generate_team(): # does not need to be a function in future
@@ -20,7 +19,7 @@ class Pokemon:
         self.types = [type_name['type']['name'] for type_name in poke_data['types']]
         self.moves = self.get_pokemon_moves(poke_data)
         
-        stats = self.get_base_stats(poke_data)
+        stats = self.get_base_stats(poke_data) 
 
         self.hp = stats["hp"]
         self.attack = stats["attack"]
