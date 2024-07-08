@@ -16,7 +16,6 @@ def uncache():
 
 def get_data(type, id):
     url = f"https://pokeapi.co/api/v2/{type}/{id}/"
-
     if url in data_dictionary: return data_dictionary[url]
 
     try:  
