@@ -27,6 +27,47 @@ class Pokemon:
         self.special_defense = self.get_stat_value(poke_data, self.level, "special-defense")
         self.speed = self.get_stat_value(poke_data, self.level, "speed")
 
+        self.nature = self.get_rand_nature
+
+
+    def get_rand_nature(self):
+        nature_data = get_data("nature", random.randint(1,26))
+        
+        decreased_stat = nature_data['decreased_stat']['name']
+        increased_stat = nature_data['increased_stat']['name']
+        
+        if (decreased_stat or increased_stat == "hp"):
+            if(decreased_stat == "hp"):
+                self.hp*0.9
+            else:
+                self.hp*1.1
+        elif (decreased_stat or increased_stat == "attack"):
+            if(decreased_stat == "attack"):
+                self.hp*0.9
+            else:
+                self.hp*1.1
+        elif (decreased_stat or increased_stat == "defense"):
+            if(decreased_stat == "defense"):
+                self.hp*0.9
+            else:
+                self.hp*1.1
+        elif (decreased_stat or increased_stat == "special-attack"):
+            if(decreased_stat == "special-attack"):
+                self.hp*0.9
+            else:
+                self.hp*1.1
+        elif (decreased_stat or increased_stat == "special-defense"):
+            if(decreased_stat == "special-defense"):
+                self.hp*0.9
+            else:
+                self.hp*1.1
+        elif (decreased_stat or increased_stat == "speed"):
+            if(decreased_stat == "speed"):
+                self.hp*0.9
+            else:
+                self.hp*1.1
+    
+
     def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
         return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
     
