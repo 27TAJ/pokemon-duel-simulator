@@ -8,27 +8,12 @@ import math
 from data import data_dictionary
 from data import get_data
 
-def generate_team():
-    num_team = random.sample(range(1,1026), 6) # replace constants w variable names
-    final_team = []
-
-    for p in num_team:
-        #fetch information for the given pokemon
-        url = f"https://pokeapi.co/api/v2/pokemon/{p}/"
-        
-        try:  
-            response = requests.get(url)
-            response.raise_for_status()
-            poke_data = response.json()
-        except requests.exceptions.RequestException as e:
-            print(f"Error getting all pokemon data: {e}")
-
-        #add pokemon object to list
-        final_team.append(Pokemon(poke_data))
-    return final_team
-
+def generate_team(): # does not need to be a function in future
+    return [Pokemon(id) for id in random.sample(range(1,1026), 6)]
 class Pokemon:
-    def __init__(self, poke_data): # add data as we need it
+    def __init__(self, id): # add data as we need it
+        poke_data = get_data("pokemon", id)
+
         self.id = poke_data['id']
         self.name = poke_data['name']
         self.level = random.randint(75,90)
@@ -90,3 +75,6 @@ class Move:
 my_team = generate_team()
 for p in my_team:
     print(p)
+
+for key in data_dictionary:
+    print(key)
