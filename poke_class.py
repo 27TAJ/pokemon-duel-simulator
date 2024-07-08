@@ -20,12 +20,23 @@ class Pokemon:
         self.types = [type_name['type']['name'] for type_name in poke_data['types']]
         self.moves = self.get_pokemon_moves(poke_data)
         
+        stats = self.get_base_stats(poke_data)
+
+        self.hp = stats["hp"]
+        self.attack = stats["attack"]
+        self.defense = stats["defense"]
+        self.special_attack = stats["special-attack"]
+        self.special_defense = stats["special-defense"]
+        self.speed = stats["speed"]
+
+        '''
         self.hp = self.get_stat_value(poke_data, self.level, "hp")
         self.attack = self.get_stat_value(poke_data, self.level, "attack")
         self.defense = self.get_stat_value(poke_data, self.level, "defense")
         self.special_attack = self.get_stat_value(poke_data, self.level, "special-attack")
         self.special_defense = self.get_stat_value(poke_data, self.level, "special-defense")
-        self.speed = self.get_stat_value(poke_data, self.level, "speed")
+        self.speed = self.get_stat_value(poke_data, self.level, "speed")'''
+        
         self.nature = self.get_rand_nature()
 
 
@@ -51,8 +62,26 @@ class Pokemon:
 
         return nature_data['name']
 
+    def get_base_stats(self, poke_data):
+        stats_dict = {}
+        for stat in poke_data['stats']:
+            name = stat['stat']['name']
+            base = stat['base_stat']
+
+            if name == "hp":
+                base = math.floor(0.01 * (2 * base * self.level) + self.level + 10)
+            else:
+                base = math.floor(0.01 * (2 * base * self.level) + self.level + 5)
+
+            stats_dict[name] = base
+
+        return stats_dict
+        
+
+    '''
     def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
         return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
+
     
     def get_stat_value(self, poke_data, level, stat_name):
         base = self.get_base_stat_value(poke_data, stat_name)
@@ -60,7 +89,8 @@ class Pokemon:
             return math.floor(0.01 * (2 * base * level) + level + 10)
         else:
             return math.floor(0.01 * (2  *base * level) + level + 5)
-            
+    '''
+    
     def get_pokemon_moves(self, poke_data):
         moves = []
         possible_moves = poke_data.get('moves', [])
@@ -82,7 +112,7 @@ class Pokemon:
                 f"Nature:{self.nature}\nhp:{self.hp}\nattack:{self.attack}\ndefense:{self.defense}\nspecial-attack:{self.special_attack}\n"
                 + f"special-defense:{self.special_defense}\nspeed:{self.speed}\n")
 
-class Move:
+class Move: 
     def __init__(self, move_data):
         self.id = move_data['id']
         self.name = move_data['name']
@@ -98,3 +128,6 @@ class Move:
 my_team = generate_team()
 for p in my_team:
     print(p)
+
+mew = Pokemon(150)
+print(mew)
