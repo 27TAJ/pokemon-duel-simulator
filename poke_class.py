@@ -26,6 +26,32 @@ class Pokemon:
         self.special_attack = self.get_stat_value(poke_data, self.level, "special-attack")
         self.special_defense = self.get_stat_value(poke_data, self.level, "special-defense")
         self.speed = self.get_stat_value(poke_data, self.level, "speed")
+        self.nature = self.get_rand_nature()
+
+
+    def get_rand_nature(self):
+        nature_data = get_data("nature", random.randint(1,25))
+        
+        if nature_data['decreased_stat'] is not None:
+
+            decreased_stat = nature_data['decreased_stat']['name']
+            increased_stat = nature_data['increased_stat']['name']
+        
+            map = {"hp" : self.hp, "attack" : self.attack, "defense" : self.defense, 
+               "special-attack" : self.special_attack, "special-defense" : self.special_defense, 
+               "speed" : self.speed}
+
+            map[decreased_stat] *= 0.9
+            map[increased_stat] *= 1.1
+
+            self.hp = int(map["hp"])
+            self.attack = int(map["attack"])
+            self.defense = int(map["defense"])
+            self.special_attack = int(map["special-attack"])
+            self.special_defense = int(map["special-defense"])
+            self.speed = int(map["speed"])
+
+        return nature_data['name']
 
     def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
         return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
@@ -57,7 +83,9 @@ class Pokemon:
     def __str__(self):
         move_strings = [str(move) for move in self.moves]
     
-        return (f"{self.name}" + " " + f"LVL: {self.level}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}")
+        return (f"{self.name}" + " " + f"LVL: {self.level}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}" + 
+                f"Nature:{self.nature}\nhp:{self.hp}\nattack:{self.attack}\ndefense:{self.defense}\nspecial-attack:{self.special_attack}\n"
+                + f"special-defense:{self.special_defense}\nspeed:{self.speed}")
 
 class Move:
     def __init__(self, move_data):
