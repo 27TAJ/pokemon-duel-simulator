@@ -1,16 +1,18 @@
 import requests
 import time
+import json
 
 data_dictionary = {}
 
 def cache():
     # store dictionary in a json file
-    pass
+    with open('data_dictionary.json', 'w') as json_file:
+        json.dump(data_dictionary, json_file)
 
 def uncache():
     # pull dictionary from json file
-    pass
-
+    with open('data_dictionary.json', 'r') as json_file:
+        data_dictionary = json.load(json_file)
 
 def get_data(type, id):
     url = f"https://pokeapi.co/api/v2/{type}/{id}/"

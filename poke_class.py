@@ -5,7 +5,9 @@
 import requests
 import random
 import math
+from data import data_dictionary
 from data import get_data
+
 
 def generate_team(): # does not need to be a function in future
     return [Pokemon(id) for id in random.sample(range(1,1026), 6)]
@@ -52,3 +54,6 @@ my_team = generate_team()
 for p in my_team:
     print(p)
     p.get_possible_moves()
+
+for key in data.data_dictionary:
+    print(key)
