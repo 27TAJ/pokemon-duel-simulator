@@ -2,6 +2,12 @@ import requests
 import time
 import json
 
+
+#model controller view
+#model contains data
+# controller interaction with data
+#view how visualize
+
 data_dictionary = {}
 
 def cache():
@@ -19,9 +25,9 @@ def get_data(type, id):
     if url in data_dictionary: return data_dictionary[url]
 
     try:  
-            response = requests.get(url)
-            response.raise_for_status()
-            data = response.json()
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
     except requests.exceptions.RequestException as e:
         print(f"Error getting all pokemon data: {e}")
     
