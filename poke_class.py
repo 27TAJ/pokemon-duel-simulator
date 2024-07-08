@@ -37,14 +37,12 @@ class Pokemon:
             decreased_stat = nature_data['decreased_stat']['name']
             increased_stat = nature_data['increased_stat']['name']
         
-            map = {"hp" : self.hp, "attack" : self.attack, "defense" : self.defense, 
-               "special-attack" : self.special_attack, "special-defense" : self.special_defense, 
-               "speed" : self.speed}
+            map = {"attack" : self.attack, "defense" : self.defense, "special-attack" : self.special_attack, 
+                   "special-defense" : self.special_defense, "speed" : self.speed}
 
             map[decreased_stat] *= 0.9
             map[increased_stat] *= 1.1
 
-            self.hp = int(map["hp"])
             self.attack = int(map["attack"])
             self.defense = int(map["defense"])
             self.special_attack = int(map["special-attack"])
@@ -82,7 +80,7 @@ class Pokemon:
     
         return (f"{self.name}" + " " + f"LVL: {self.level}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}" + 
                 f"Nature:{self.nature}\nhp:{self.hp}\nattack:{self.attack}\ndefense:{self.defense}\nspecial-attack:{self.special_attack}\n"
-                + f"special-defense:{self.special_defense}\nspeed:{self.speed}")
+                + f"special-defense:{self.special_defense}\nspeed:{self.speed}\n")
 
 class Move:
     def __init__(self, move_data):
