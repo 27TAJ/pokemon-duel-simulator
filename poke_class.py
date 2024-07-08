@@ -74,10 +74,10 @@ class Pokemon:
                 base = math.floor(0.01 * (2 * base * self.level) + self.level + 5)
 
             stats_dict[name] = base
-
         return stats_dict
         
-
+    # this method needs to iterate through all stats each time in order to find
+    # the base stat we're looking for, new method iterates once and returns a dictionary
     '''
     def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
         return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
@@ -90,7 +90,7 @@ class Pokemon:
         else:
             return math.floor(0.01 * (2  *base * level) + level + 5)
     '''
-    
+
     def get_pokemon_moves(self, poke_data):
         moves = []
         possible_moves = poke_data.get('moves', [])
@@ -99,10 +99,7 @@ class Pokemon:
         
         for move in pokemon_moves:
             move_data = get_data("move", move)
-            try:  
-                moves.append(Move(move_data))
-            except requests.exceptions.RequestException as e:
-                print(f"Error getting all move data: {e}")
+            moves.append(Move(move_data)) # dont need try/except bc alr in get_data call
         return moves
 
     def __str__(self):
