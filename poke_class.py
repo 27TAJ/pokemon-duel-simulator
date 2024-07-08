@@ -30,7 +30,6 @@ class Pokemon:
 
 
     def get_rand_nature(self):
-        print("1")
         nature_data = get_data("nature", random.randint(1,25))
         
         if nature_data['decreased_stat'] is not None:
@@ -41,48 +40,18 @@ class Pokemon:
             map = {"hp" : self.hp, "attack" : self.attack, "defense" : self.defense, 
                "special-attack" : self.special_attack, "special-defense" : self.special_defense, 
                "speed" : self.speed}
-        
-            print(f"increased stat is {increased_stat}: {map[increased_stat]}")
-            print(f"decreased stat is {decreased_stat}: {map[decreased_stat]}")
 
             map[decreased_stat] *= 0.9
             map[increased_stat] *= 1.1
-        
-        print(nature_data['name'])
+
+            self.hp = int(map["hp"])
+            self.attack = int(map["attack"])
+            self.defense = int(map["defense"])
+            self.special_attack = int(map["special-attack"])
+            self.special_defense = int(map["special-defense"])
+            self.speed = int(map["speed"])
 
         return nature_data['name']
-        '''
-        if (decreased_stat or increased_stat == "hp"):
-            if(decreased_stat == "hp"):
-                self.hp*0.9
-            else:
-                self.hp*1.1
-        elif (decreased_stat or increased_stat == "attack"):
-            if(decreased_stat == "attack"):
-                self.hp*0.9
-            else:
-                self.hp*1.1
-        elif (decreased_stat or increased_stat == "defense"):
-            if(decreased_stat == "defense"):
-                self.hp*0.9
-            else:
-                self.hp*1.1
-        elif (decreased_stat or increased_stat == "special-attack"):
-            if(decreased_stat == "special-attack"):
-                self.hp*0.9
-            else:
-                self.hp*1.1
-        elif (decreased_stat or increased_stat == "special-defense"):
-            if(decreased_stat == "special-defense"):
-                self.hp*0.9
-            else:
-                self.hp*1.1
-        elif (decreased_stat or increased_stat == "speed"):
-            if(decreased_stat == "speed"):
-                self.hp*0.9
-            else:
-                self.hp*1.1'''
-    
 
     def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
         return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
