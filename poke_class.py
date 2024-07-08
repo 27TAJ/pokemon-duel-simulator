@@ -70,11 +70,8 @@ class Pokemon:
         pokemon_moves = random.sample(move_names, min(4, len(move_names)))
         
         for move in pokemon_moves:
-            url = f"https://pokeapi.co/api/v2/move/{move}/"
+            move_data = get_data("move", move)
             try:  
-                response = requests.get(url)
-                response.raise_for_status()
-                move_data = response.json()
                 moves.append(Move(move_data))
             except requests.exceptions.RequestException as e:
                 print(f"Error getting all move data: {e}")
@@ -103,6 +100,3 @@ class Move:
 my_team = generate_team()
 for p in my_team:
     print(p)
-
-for key in data_dictionary:
-    print(key)
