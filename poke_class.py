@@ -55,5 +55,5 @@ for p in my_team:
     print(p)
     p.get_possible_moves()
 
-for key in data.data_dictionary:
+for key in data_dictionary:
     print(key)
