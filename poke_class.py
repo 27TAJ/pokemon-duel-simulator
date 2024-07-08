@@ -4,6 +4,7 @@
 
 import requests
 import random
+import math
 
 def generate_team():
     num_team = random.sample(range(1,1026), 6) # replace constants w variable names
@@ -28,18 +29,26 @@ class Pokemon:
     def __init__(self, poke_data): # add data as we need it
         self.id = poke_data['id']
         self.name = poke_data['name']
+        self.level = random.randint(75,90)
         self.types = [type_name['type']['name'] for type_name in poke_data['types']]
         self.moves = self.get_pokemon_moves(poke_data)
         
-        self.hp = self.get_base_stat_value(poke_data, "hp")
-        self.attack = self.get_base_stat_value(poke_data, "attack")
-        self.defense = self.get_base_stat_value(poke_data, "defense")
-        self.special_attack = self.get_base_stat_value(poke_data, "special-attack")
-        self.special_defense = self.get_base_stat_value(poke_data, "special-defense")
-        self.speed = self.get_base_stat_value(poke_data, "speed")
+        self.hp = self.get_stat_value(poke_data, self.level, "hp")
+        self.attack = self.get_stat_value(poke_data, self.level, "attack")
+        self.defense = self.get_stat_value(poke_data, self.level, "defense")
+        self.special_attack = self.get_stat_value(poke_data, self.level, "special-attack")
+        self.special_defense = self.get_stat_value(poke_data, self.level, "special-defense")
+        self.speed = self.get_stat_value(poke_data, self.level, "speed")
 
     def get_base_stat_value(self, poke_data, stat_name): # returns base value of specified stat
         return next(stat['base_stat'] for stat in poke_data['stats'] if stat['stat']['name'] == stat_name)
+    
+    def get_stat_value(self, poke_data, level, stat_name):
+        base = self.get_base_stat_value(poke_data, stat_name)
+        if (stat_name == "hp"):
+            return math.floor(0.01 * (2 * base * level) + level + 10)
+        else:
+            return math.floor(0.01 * (2  *base * level) + level + 5)
             
     def get_pokemon_moves(self, poke_data):
         moves = []
@@ -61,7 +70,7 @@ class Pokemon:
     def __str__(self):
         move_strings = [str(move) for move in self.moves]
     
-        return (f"{self.name}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}")
+        return (f"{self.name}" + " " + f"LVL: {self.level}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}")
 
 class Move:
     def __init__(self, move_data):
