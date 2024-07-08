@@ -7,8 +7,6 @@ import random
 import math
 from data import get_data
 
-def generate_team(): # does not need to be a function in future
-    return [Pokemon(id) for id in random.sample(range(1,1026), 6)]
 class Pokemon:
     def __init__(self, id): # add data as we need it
         poke_data = get_data("pokemon", id)
@@ -95,6 +93,7 @@ class Move:
     def __str__(self):
        return f"{self.name}"
 
-my_team = generate_team()
+my_team = [Pokemon(id) for id in random.sample(range(1,1026), 6)]
 for p in my_team:
     print(p)
+
