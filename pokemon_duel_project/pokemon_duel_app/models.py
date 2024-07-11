@@ -21,6 +21,7 @@ class Pokemon(models.Model):
     level = models.IntegerField()
     types = models.JSONField()
     moves = models.ManyToManyField(Move)
+    hp = models.IntegerField(default=100)
     attack = models.IntegerField()
     defense = models.IntegerField()
     special_attack = models.IntegerField()
@@ -29,7 +30,7 @@ class Pokemon(models.Model):
     nature = models.CharField(max_length=100)
 
     def __str__(self):
-        move_strings = [str(move) for move in self.moves]
+        move_strings = [str(move) for move in self.moves.all()]
     
         return (f"{self.name}" + " " + f"LVL: {self.level}" + " " + f"ID: {self.id}\n" + f"Moves:{move_strings}" + 
                 f" Nature:{self.nature}\nhp:{self.hp}\nattack:{self.attack}\ndefense:{self.defense}\nspecial-attack:{self.special_attack}\n"
