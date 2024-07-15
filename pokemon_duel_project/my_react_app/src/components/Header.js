@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css';
 
 const Header = () => {
     const title = "Pokémon Duel Simulator";
