@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: logofont;
+    src: url('../fonts/Pokemon\ Solid.ttf') format('truetype');
+}
+
+h1{
+    text-align: center;
+    background-image: url('../images/pokemon_grass.jpg');
+    background-position: center;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 65px;
+    font-size: 25px;
+    font-family: logofont;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+header h1 {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    background-color: #0275dd;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.navbar a{
+    color: yellow;
+    background-color: #0275dd;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+
+.navbar a:hover{
+    background-color: #025196;
+}
+.navbar li{
+    float: left;
+    flex: 1
+}
+
+body{
+    margin:0px;
+    text-align: center;
+}
+
+main{
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: center;
+}
+footer {
+    background-color: #0275dd;
+    margin: 0px;
+    height: 50px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+footer p{
+    color: yellow;
+    text-align: center;
+}
+
+#content {
+    min-height: 100%;
+    margin-bottom: 0px;
+}
+
+#game_screen {
+    background-image: url('../images/battle_background.jpg');
+    background-size: cover;
+}
