@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 @font-face {
-    font-family: 'poke_font';
+    font-family: pokemon;
     src: url('../fonts/retro_font.ttf');
 }
 
@@ -17,7 +17,9 @@ h1{
     margin: 0px;
     height: 65px;
     font-size: 25px;
-    font-family: 'poke_font', sans-serif;
+    font-family: pokemon, sans-serif;
+    align-content: center;
+
 }
 
 html, body{
@@ -93,9 +95,11 @@ footer p{
 }
 
 #game_screen {
+    margin-top: 20px;
     background-image: url('../images/battle_background.jpg');
     background-size: cover;
     border-radius: 10px;
+    border: black;
 }
 
 .container{
@@ -110,13 +114,15 @@ footer p{
 }
 
 .moves {
+    margin-top: 5px;
     font-size: 40px;
-    padding: 20px 66px;
+    padding: 20px 61px;
     border-color: transparent;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
-    font-family: 'poke_font', sans-serif;
+    font-family: pokemon, sans-serif;
 }
+
 .moves:hover {
     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5); 
 }
