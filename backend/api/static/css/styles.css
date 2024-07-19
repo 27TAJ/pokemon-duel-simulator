@@ -94,6 +94,8 @@ footer p{
     margin-bottom: 0px;
 }
 
+/*  ------------------------    Home Page -----------------------------  */
+
 #game_screen {
     margin-top: 20px;
     background-image: url('../images/battle_background.jpg');
@@ -129,4 +131,39 @@ footer p{
 
 .moves:active{
     transform: translateY(2px);
+}
+
+/*  ------------------------    Contact Page -----------------------------  */
+.section-header{
+    padding: 20px;
+    font-size: 40px;
+}
+body{
+    background-color: #add8e6;
+}
+
+.both_containers{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.tommy-container, .tayden-container{
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.creator-name{
+    font-size: 28px;
+}
+.tommy-right, .tayden-right{
+    padding: 20px;
+    padding-left: 100px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.right-subcontainer{
+    padding: 10px;
 }
