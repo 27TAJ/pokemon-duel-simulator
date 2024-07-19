@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 @font-face {
-    font-family: logofont;
-    src: url('../fonts/Pokemon\ Solid.ttf') format('truetype');
+    font-family: pokemon;
+    src: url('../fonts/retro_font.ttf');
 }
 
 h1{
@@ -17,7 +17,9 @@ h1{
     margin: 0px;
     height: 65px;
     font-size: 25px;
-    font-family: logofont;
+    font-family: pokemon, sans-serif;
+    align-content: center;
+
 }
 
 html, body{
@@ -80,6 +82,7 @@ footer {
     width: 100%;
     position: relative;
     bottom: 0;
+    position: fixed;
 }
 footer p{
     color: yellow;
@@ -91,7 +94,76 @@ footer p{
     margin-bottom: 0px;
 }
 
+/*  ------------------------    Home Page -----------------------------  */
+
 #game_screen {
+    margin-top: 20px;
     background-image: url('../images/battle_background.jpg');
     background-size: cover;
+    border-radius: 10px;
+    border: black;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.move_buttons_container{
+    display: flex;
+    gap: 20px;
+}
+
+.moves {
+    margin-top: 5px;
+    font-size: 40px;
+    padding: 20px 61px;
+    border-color: transparent;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    font-family: pokemon, sans-serif;
+}
+
+.moves:hover {
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5); 
+}
+
+.moves:active{
+    transform: translateY(2px);
+}
+
+/*  ------------------------    Contact Page -----------------------------  */
+.section-header{
+    padding: 20px;
+    font-size: 40px;
+}
+body{
+    background-color: #add8e6;
+}
+
+.both_containers{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.tommy-container, .tayden-container{
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.creator-name{
+    font-size: 28px;
+}
+.tommy-right, .tayden-right{
+    padding: 20px;
+    padding-left: 100px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.right-subcontainer{
+    padding: 10px;
 }
