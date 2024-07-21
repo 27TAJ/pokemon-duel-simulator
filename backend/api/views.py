@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views import View
 import random
 from .pokemon_class import Pokemon
+from.forms import Support_Ticket_Form
 
 def home_view(request):
     context = {
@@ -28,6 +29,21 @@ def contact_view(request):
     }
     return render(request, 'contact.html', context)
 
+def support_view(request):
+    if request.method == 'POST':
+        form = Support_Ticket_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            form = Support_Ticket_Form()
+            success_message = "Support Ticket submitted successfully. Thank you."
+        else:
+            success_message = None
+    else:
+        form = Support_Ticket_Form()
+        success_message = None
+
+    return render(request, 'support.html', {'form': form, 'success_message': success_message})
+        
 class GenerateTeamView(View):
     def get(self, request):
         random_team = [Pokemon(id) for id in random.sample(range(1,1026), 6)]
