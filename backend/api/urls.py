@@ -3,9 +3,12 @@ from . import views
 from .views import GenerateTeamView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+
 
 urlpatterns = [
     path('', views.home_view, name='home'),
+    path('admin/', admin.site.urls),
     path('about/', views.about_view, name='about'),
     path('support/', views.support_view, name='support'),
     path('contact/', views.contact_view, name='contact'),

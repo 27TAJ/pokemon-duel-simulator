@@ -167,3 +167,24 @@ body{
 .right-subcontainer{
     padding: 10px;
 }
+
+/*  ------------------------    Support Page -----------------------------  */
+
+
+.support-main{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+}
+.form-element{
+    margin: 20px;
+}
+
+textarea{
+    max-height: 130px;
+    max-width: 500px;
+}
