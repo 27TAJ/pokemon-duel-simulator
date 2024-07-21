@@ -183,8 +183,3 @@ body{
 .form-element{
     margin: 20px;
 }
-
-textarea{
-    max-height: 130px;
-    max-width: 500px;
-}
