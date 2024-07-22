@@ -82,7 +82,7 @@ footer {
     width: 100%;
     position: relative;
     bottom: 0;
-    position: fixed;
+    margin-top: 30px;
 }
 footer p{
     color: yellow;
@@ -96,6 +96,15 @@ footer p{
 
 /*  ------------------------    Home Page -----------------------------  */
 
+.main-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.top-canvas{
+    margin-top: 20px;
+}
+
 #game_screen {
     margin-top: 20px;
     background-image: url('../images/battle_background.jpg');
@@ -104,7 +113,25 @@ footer p{
     border: black;
 }
 
-.container{
+#your_pokemon_screen, #opponents_pokemon_screen, #chat_screen{
+    border-radius: 10px;
+}
+
+.left_canvas, .right_canvas{
+    margin-top:30px;
+}
+
+.left-header,.right-header{
+    margin-top: 20px;
+    font-family: pokemon, sans-serif;
+}
+
+.left-container, .right-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.mid-container{
     display: flex;
     flex-direction: column;
     align-items: center;
