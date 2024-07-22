@@ -3,14 +3,46 @@
 {% block header_title %}Welcome to the Home Page{% endblock %}
 
 {% block content %}
-<div class="main-content">
-    <div class="container">
-    <canvas id="game_screen" width="1080" height="600" style="border:1px solid #000000;"></canvas>
-    <div class="move_buttons_container">
-        <button class="moves">Move 1</button>
-        <button class="moves">Move 2</button>
-        <button class="moves">Move 3</button>
-        <button class="moves">Move 4</button>
+<div class="main-container">
+    <div class="left-container">
+
+        <div class="left-header">
+            <h2>Your Pokemon:</h2>
+        </div>
+
+        <div class="left_canvas">
+            <canvas id="your_pokemon_screen" width="300" height="280" style="border:1px solid #000000;"></canvas>
+        </div>
+
+    </div>
+    <div class="mid-container">
+
+        <div class="top-canvas">
+            <canvas id="chat_screen" width="1080" height="150" style="border:1px solid #000000;"></canvas>
+        </div>
+
+        <div class="main-canvas">
+        <canvas id="game_screen" width="1080" height="600" style="border:1px solid #000000;"></canvas>
+        </div>
+
+        <div class="move_buttons_container">
+            <button class="moves">Move 1</button>
+            <button class="moves">Move 2</button>
+            <button class="moves">Move 3</button>
+           <button class="moves">Move 4</button>
+        </div>
+
+    </div>
+    <div class="right-container">
+
+        <div class="right-header">
+            <h2>Opponents Pokemon:</h2>
+        </div>
+
+        <div class="right_canvas">
+            <canvas id="opponents_pokemon_screen" width="300" height="280" style="border:1px solid #000000;"></canvas>
+        </div>
+
     </div>
 </div>
 {% endblock %}
