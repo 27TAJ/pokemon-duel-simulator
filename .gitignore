@@ -45,4 +45,4 @@ yarn-error.log*
 # Ignore Python bytecode
 __pycache__/
 *.pyc
-
+node_modules
