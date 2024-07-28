@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const img = new Image();
 
-    img.src = "../../../../backend/api/static/images/pokeball.png";
+    img.src = "../images/pokeball.png";
 
     img.onload = function() {
         context.drawImage(img, 50, 50, img.width/3, img.height/2);
