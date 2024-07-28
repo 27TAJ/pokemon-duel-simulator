@@ -1,7 +1,8 @@
 
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('opponents_pokemon_screen');
+    const canvas = document.getElementById("opponents_pokemon_screen");
     const context = canvas.getContext('2d');
     
     const img = new Image();
