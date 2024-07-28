@@ -6,10 +6,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const img = new Image();
 
-    img.src = "../images/pokeball.png";
+    img.src = "/static/images/pokeball.png";
 
     img.onload = function() {
-        context.drawImage(img, 50, 50, img.width/3, img.height/2);
-    }
+       
+        const rows = 2;
+        const columns = 3;
+        
+        const pokeballWidth = canvas.width / columns * 0.8; 
+        const pokeballHeight = pokeballWidth; 
 
+        const xPadding = (canvas.width - (pokeballWidth * columns)) / (columns + 1);
+        const yPadding = (canvas.height - (pokeballHeight * rows)) / (rows + 1);
+
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < columns; col++) {
+                const x = xPadding + col * (pokeballWidth + xPadding);
+                const y = yPadding + row * (pokeballHeight + yPadding);
+                context.drawImage(img, x, y, pokeballWidth, pokeballHeight);
+            }
+        }
+    }
 });
