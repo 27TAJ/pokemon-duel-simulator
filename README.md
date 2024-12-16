@@ -1,0 +1,3 @@
+# Pokémon Duel Simulator
+
+Pokémon Duel Simulator is an application that lets users simulate Pokémon battles in a dynamic and interactive way. The application combines a React and Next.js frontend with a Django backend to deliver a seamless experience. Pokémon data, including stats and images, is dynamically fetched from the PokeAPI, ensuring an authentic and rich gaming experience. The backend serves as a RESTful API, managing user data and game state, while the frontend uses server-side rendering for improved performance and responsiveness. This project showcases the integration of modern web technologies to create an engaging application for Pokémon fans.
